@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsBoolean, IsNotEmpty, IsString } from "class-validator";
 
 export class CreateEmpresaDto {
     
@@ -39,10 +39,9 @@ export class CreateEmpresaDto {
     pais: string;
 
     @IsNotEmpty()
-    @IsString() 
+    @IsBoolean() 
     status: boolean; // assume que o status é uma string representando um booleano, como "true" ou "false"
 
     
 
-    // Remove the last invalid decorator usage
 }

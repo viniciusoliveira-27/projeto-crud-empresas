@@ -5,7 +5,7 @@ import { EmpresaService } from '../service/empresa.service';
 import { Empresa } from '../schema/empresa.schema';
 
 
-@Controller('empresa')
+@Controller('empresas')
 export class EmpresaController {
 
   constructor(
@@ -36,12 +36,12 @@ export class EmpresaController {
     return this.empresaService.create(dto);
   }
 
-  @Put()
-  update(@Body() id: string, dto: UpdateEmpresaDto): Promise<Empresa> {
+  @Put(':id')
+  update(@Param('id') id: string, @Body() dto: UpdateEmpresaDto): Promise<Empresa> {
     return this.empresaService.update(id, dto);
   }
 
-  @Delete('/:id')
+  @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   delete(@Param('id') id: string) {
     return this.empresaService.delete(id);
