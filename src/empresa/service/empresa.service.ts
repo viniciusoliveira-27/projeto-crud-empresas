@@ -37,7 +37,7 @@ export class EmpresaService {
     return empresa.save();
   }
 
-  async update(dto: UpdateEmpresaDto): Promise<Empresa> {
+  async update(id: string, dto: UpdateEmpresaDto): Promise<Empresa> {
     const empresa = await this.empresaModel.findByIdAndUpdate(dto.id, dto, {new: true}).exec();
     if (!empresa) {
       throw new HttpException('Empresa não encontrada', HttpStatus.NOT_FOUND);
